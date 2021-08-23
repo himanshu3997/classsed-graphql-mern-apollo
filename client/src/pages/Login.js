@@ -27,7 +27,10 @@ function Login(props) {
     },
     onError(err) {
       setErrors(err.graphQLErrors[0].extensions.exception.errors);
+      // setErrors(err&&err.graphQLErrors[0]?err.graphQLErrors[0].extensions.exception.errors:{});
+      
     },
+    
     variables: values
   });
 
@@ -61,6 +64,13 @@ function Login(props) {
           Login
         </Button>
       </Form>
+      {/* <div className="ui error message">
+        <ul classname="list">
+          {Object.values(errors).map(value =>(
+            <li key = {value}>{value}</li> 
+          ))}
+        </ul>
+      </div> */}
       {Object.keys(errors).length > 0 && (
         <div className="ui error message">
           <ul className="list">
